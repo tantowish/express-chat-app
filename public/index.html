@@ -4,45 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat app</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>App Chat</h1>
-    <div>
-        <!-- Header Container -->
-        <div>
-            <span>Icon</span>
-            <input type="text" name="name" value="anonymous" maxlength="20">
-        </div>
-
-        <!-- Message Container -->
-        <div>
-            <ul id="message-container">
-                <!-- msg left -->
-                <li>
-                    <p>Lorem Ipsum</p>
-                    <span>Bluebird 26 july 10:40</span>
-                </li>
-                <!-- msg right -->
-                <li>
-                    <p>Lorem Ipsum</p>
-                    <span>Bluebird 26 july 10:40</span>
-                </li>
-                <!-- msg feedback -->
-                <li>
-                    <p>Lorem is typing</p>
-                </li>
-            </ul>
-
-            <form action="" id="message-form">
-                <input type="text" name="message" id="message-input">
-                <div>
-                    <button type="submit"></button>
+<body class="bg-blue-50">
+    <div class="h-screen w-screen flex flex-col gap-2 items-center justify-center">
+        <div id="chat-container" class="w-96">
+            <div class="bg-white shadow-md rounded-lg max-w-lg w-full">
+                <div class="px-4 py-3.5 border-b bg-blue-500 text-white rounded-t-lg flex justify-between items-center">
+                    <div class="flex gap-3">
+                        <p class="text-lg font-semibold"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></p>
+                        <input class="bg-blue-500 border-none outline-none text-lg font-semibold" type="text" name="name-input" id="name-input" value="Anonymous">
+                    </div>
                 </div>
-            </form>
-
-            <h3 id="client-total">Total clients: 2</h3>
+                <div id="message-container" class="p-4 h-[60vh] overflow-y-auto">
+                  <!-- Chat messages will be displayed here -->
+                  <div class="mb-2 text-right">
+                    <p class="bg-blue-500 text-white rounded-lg py-2 px-4 inline-block">hello</p>
+                    <p class="text-xs text-gray-700">bluebird 26 July 10:40</p>
+                  </div>
+                  <div class="mb-2">
+                    <p class="bg-gray-200 text-gray-700 rounded-lg py-2 px-4 inline-block">This is a response from the people.</p>
+                    <p class="text-xs text-gray-700">killer 26 July 10:41</p>
+                  </div>
+                  <div class="mt-4 text-center">
+                    <p>Killer is typing a message</p>
+                  </div>
+                </div>
+                <div class="p-4 border-t flex">
+                    <input id="message-input" name="message" type="text" placeholder="Type a message" class="w-full px-3 py-2 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button id="send-button" class="bg-blue-500 text-white px-4 py-2 rounded-r-md hover:bg-blue-600 transition duration-300">Send</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h4 class="font-semibold text-lg text-gray-700">Total Clients: </h4>
         </div>
     </div>
-    
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
